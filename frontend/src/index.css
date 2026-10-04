@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased font-sans;
+  }
+}
+
+/* Custom CSS Keyframe Motion Background Animations */
+
+@keyframes panMotion {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1.5%);
+  }
+  100% {
+    transform: scale(1) translate(0%, 0%);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes waveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-pan-motion {
+  animation: panMotion 24s ease-in-out infinite alternate;
+}
+
+.animate-float-slow {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatParticle 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-wave-bg {
+  background-size: 200% 200%;
+  animation: waveGradient 10s ease infinite;
+}
+
+/* Custom Print Styles for Bill Receipts */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-bill-area, #printable-bill-area * {
+    visibility: visible;
+  }
+  #printable-bill-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

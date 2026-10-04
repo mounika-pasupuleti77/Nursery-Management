@@ -25,6 +25,7 @@ const {
   exportExpensesExcel
 } = require('../controllers/exportController');
 const { getDashboardSummary } = require('../controllers/dashboardController');
+const { getDatabaseInspect } = require('../controllers/databaseController');
 
 const { protect } = require('../middleware/authMiddleware');
 
@@ -38,6 +39,9 @@ router.put('/settings', updateSettings);
 
 // Dashboard Summary
 router.get('/dashboard/summary', getDashboardSummary);
+
+// Live Database Inspection Route
+router.get('/database/inspect', getDatabaseInspect);
 
 // Plant Routes
 router.get('/plants', getPlants);
